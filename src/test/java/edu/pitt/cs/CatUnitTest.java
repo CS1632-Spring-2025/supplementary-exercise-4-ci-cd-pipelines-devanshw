@@ -1,20 +1,18 @@
 package edu.pitt.cs;
 
 import org.junit.After;
+import static org.junit.Assert.assertEquals;
 import org.junit.Before;
-import org.junit.Test;
 import org.junit.FixMethodOrder;
+import org.junit.Test;
 import org.junit.runners.MethodSorters;
-import static org.junit.Assert.*;
-
-import org.mockito.Mockito;
-import static org.mockito.Mockito.*;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class CatUnitTest {
 
 	/**
-	 * The test fixture for this JUnit test. Test fixture: a fixed state of a set of
+	 * The test fixture for this JUnit test. 
+	 * Test fixture: a fixed state of a set of
 	 * objects used as a baseline for running tests. The test fixture is initialized
 	 * using the @Before setUp method which runs before every test case. The test
 	 * fixture is removed using the @After tearDown method which runs after each
@@ -28,10 +26,16 @@ public class CatUnitTest {
 		// INITIALIZE THE TEST FIXTURE
 
 		// Create a Cat with ID 1 and name "Jennyanydots", assign to c using a call to Cat.createInstance(InstanceType, int, String).
+
 		// Passing InstanceType.IMPL as the first parameter will create a real cat using your CatImpl implementation.
+
 		// Passing InstanceType.MOCK as the first parameter will create a mock cat using Mockito.
+		
 		// Which type is the correct choice for this unit test?  I'll leave it up to you.  The answer is in the Unit Testing Part 2 lecture. :)
+
 		// TODO: Fill in
+
+		c = Cat.createInstance(InstanceType.IMPL, 1, "Jennyanydots");
 	}
 
 	@After
@@ -52,7 +56,8 @@ public class CatUnitTest {
 	 */
 	@Test
 	public void testGetId() {
-		// TODO: Fill in
+		int cat_id = c.getId();
+		assertEquals(1, cat_id);
 	}
 
 	/**
@@ -66,7 +71,8 @@ public class CatUnitTest {
 	 */
 	@Test
 	public void testGetName() {
-		// TODO: Fill in
+		String cat_name = c.getName();
+		assertEquals("Jennyanydots", cat_name);
 	}
 
 	/**
@@ -80,7 +86,8 @@ public class CatUnitTest {
 	 */
 	@Test
 	public void testGetRented() {
-		// TODO: Fill in
+		boolean get_rent = c.getRented();
+		assertEquals(false, get_rent);
 	}
 
 	/**
@@ -94,7 +101,8 @@ public class CatUnitTest {
 	 */
 	@Test
 	public void testToString() {
-		// TODO: Fill in
+		String to_string_output = c.toString();
+		assertEquals("ID 1. Jennyanydots", to_string_output);
 	}
 
 	/**
@@ -109,7 +117,9 @@ public class CatUnitTest {
 	 */
 	@Test
 	public void testRentCat() {
-		// TODO: Fill in
+		c.rentCat();
+		boolean get_rented_value = c.getRented();
+		assertEquals(true, get_rented_value);
 	}
 
 	/**
@@ -125,7 +135,9 @@ public class CatUnitTest {
 	 */
 	@Test
 	public void testReturnCat() {
-		// TODO: Fill in
+		c.returnCat();
+		boolean get_rented_value = c.getRented();
+		assertEquals(false, get_rented_value);
 	}
 
 	/**
@@ -140,7 +152,11 @@ public class CatUnitTest {
 	 */
 	@Test
 	public void testRenameCat() {
-		// TODO: Fill in
+		c.renameCat("Garfield");
+		c.getName();
+		String to_string_val = c.toString();
+		assertEquals("ID 1. Garfield", to_string_val);
+
 	}
 
 }
